@@ -14,7 +14,7 @@ from config import OPENAI_MODEL
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
-MCP_SERVER_PATH = MCP_SERVER_PATH = PROJECT_ROOT / "mcp_servers" / "server.py"
+MCP_SERVER_PATH = PROJECT_ROOT / "mcp_servers" / "server.py"
 TELEGRAM_MCP_SERVER_PATH = PROJECT_ROOT / "mcp_servers" / "telegram_server.py"
 
 
@@ -78,6 +78,19 @@ You have access to three types of tools.
 3. MCP tools:
    Use MCP tools when the user's request requires
    functionality provided by an MCP server.
+   
+4. send_telegram_message:
+   Use this tool whenever the user explicitly asks you
+   to send, forward, or deliver information to Telegram.
+
+When the user asks to translate something AND send the
+translation to Telegram:
+1. Translate the text using fine_tuned_model.
+2. Call send_telegram_message with the translated text.
+3. Only after the tool succeeds, tell the user that the
+   message was sent successfully.
+4. Never claim that Telegram is unavailable unless the
+   Telegram tool actually returns an error.
 
 Rules:
 - Use fine_tuned_model for translation requests.
