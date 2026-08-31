@@ -50,7 +50,15 @@ async def handle_message(
             ]
         })
 
-        response = result["messages"][-1].content
+        messages = result["messages"]
+
+        response = messages[-1].content
+
+        for message in reversed(messages):
+            if getattr(message, "type", None) == "tool":
+                if getattr(message, "name", None) == "fine_tuned_model":
+                    response = message.content
+                    break
 
         await update.message.reply_text(response)
 
