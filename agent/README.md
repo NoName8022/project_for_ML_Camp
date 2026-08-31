@@ -50,12 +50,19 @@ TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 
 ## DOCKER run
 
-docker compose up --build
+Telegram Bot run
+docker compose up --build student-ai-agent
+
+CLI run
+docker compose up --build -d student-ai-agent-cli
+docker attach student-ai-agent-cli
 
 ## Local run
 
-Install dependencies in project\agent:
+Install dependencies in final_project\agent:
 pip install -r requirements.txt
 
 Then run:
-python telegram_bot.py
+python agent\telegram_bot.py
+or
+python agent\main.py
