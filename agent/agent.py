@@ -1,8 +1,6 @@
-from dotenv import load_dotenv
-load_dotenv()
 import sys
 from pathlib import Path
-
+import os
 from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
 from langchain_mcp_adapters.client import MultiServerMCPClient
@@ -42,6 +40,9 @@ async def create_student_agent():
                 "args": [
                     str(TELEGRAM_MCP_SERVER_PATH)
                 ],
+                "env": {
+                    "TELEGRAM_BOT_TOKEN": os.environ["TELEGRAM_BOT_TOKEN"]
+                },
             }
         }
     )

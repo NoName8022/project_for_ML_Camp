@@ -18,6 +18,8 @@ async def main():
         if message.lower() == "exit":
             break
 
+        print(repr(message))
+        
         result = await agent.ainvoke({
             "messages": [
                 {
