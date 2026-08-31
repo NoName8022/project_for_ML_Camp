@@ -1,9 +1,12 @@
 services:
+
   student-ai-agent:
     build: .
     container_name: student-ai-agent
     env_file:
       - .env
+    volumes:
+      - hf_cache:/root/.cache/huggingface
     restart: unless-stopped
 
   student-ai-agent-cli:
@@ -11,6 +14,11 @@ services:
     container_name: student-ai-agent-cli
     env_file:
       - .env
+    volumes:
+      - hf_cache:/root/.cache/huggingface
     stdin_open: true
     tty: true
     command: python main.py
+
+volumes:
+  hf_cache:
