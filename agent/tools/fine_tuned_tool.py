@@ -69,17 +69,19 @@ def translate(text: str) -> str:
 
     return result
 
-
 @tool
 def fine_tuned_model(text: str) -> str:
     """
     Translate English text into Ukrainian using
     the fine-tuned machine translation model.
     """
-    print("[TOOL] fine_runed_tool")
-    print(f"[INPUT] {text}")
+    print("\nFINE-TUNED MODEL")
+    print("INPUT LENGTH:", len(text))
+    print("INPUT:", text[:500])
 
     result = translate(text)
+
+    print("OUTPUT:", result)
 
     return result
 
@@ -87,3 +89,5 @@ if __name__ == "__main__":
     print(
         translate("Hello, how are you?")
     )
+
+

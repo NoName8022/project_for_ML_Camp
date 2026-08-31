@@ -7,7 +7,6 @@ from mcp.types import Tool, TextContent
 
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 print(
     "[MCP] TELEGRAM_BOT_TOKEN:",
@@ -33,12 +32,16 @@ async def list_tools():
             inputSchema={
                 "type": "object",
                 "properties": {
+                    "chat_id": {
+                        "type": "string",
+                        "description": "Telegram chat ID"
+                    },
                     "message": {
                         "type": "string",
                         "description": "Message to send"
                     }
                 },
-                "required": ["message"]
+                "required": ["chat_id", "message"]
             }
         )
     ]
@@ -54,7 +57,7 @@ async def call_tool(name: str, arguments: dict):
                 "TELEGRAM_BOT_TOKEN environment variable is not set"
             )
 
-        chat_id = CHAT_ID
+        chat_id = arguments["chat_id"]
         message = arguments["message"]
 
         bot = Bot(token=BOT_TOKEN)
