@@ -5,13 +5,10 @@ from telegram import Update
 from telegram.ext import (
     Application,
     MessageHandler,
-    CommandHandler,
     ContextTypes,
     filters,
 )
-
 from agent import create_student_agent
-load_dotenv()
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
