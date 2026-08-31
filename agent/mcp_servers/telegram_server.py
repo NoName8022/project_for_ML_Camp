@@ -1,17 +1,26 @@
 from dotenv import load_dotenv
-load_dotenv()
-
+from pathlib import Path
 import os
-
+import sys
 from telegram import Bot
 from mcp.server import Server
 from mcp.server.stdio import stdio_server
 from mcp.types import Tool, TextContent
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+load_dotenv(PROJECT_ROOT / "agent/.env")
+
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+print(
+    "[MCP] TELEGRAM_BOT_TOKEN:",
+    "SET" if BOT_TOKEN else "NOT SET",
+    file=sys.stderr
+)
 
 server = Server("telegram-mcp-server")
 
-BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 
 @server.list_tools()
