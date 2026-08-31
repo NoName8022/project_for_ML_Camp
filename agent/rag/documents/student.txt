@@ -1,0 +1,17 @@
+Students information
+
+Name: Artem
+Date of birth: 20 May 2006
+University: Lviv Polytechnic National University
+Faculty: Computer Science
+Specialization: Cybersecurity
+Programming languages: Python, CSS, JavaScript
+Favorite programming language: Python
+
+Name: Alex
+Date of birth: 20 May 2006
+University: Lviv Polytechnic National University
+Faculty: Computer Science
+Specialization: Cybersecurity
+Programming languages: Python, CSS, JavaScript
+Favorite programming language: Python

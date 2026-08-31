@@ -1,0 +1,7 @@
+services:
+  student-ai-agent:
+    build: .
+    container_name: student-ai-agent
+    env_file:
+      - .env
+    restart: unless-stopped
