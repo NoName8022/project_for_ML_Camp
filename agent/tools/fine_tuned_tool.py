@@ -76,7 +76,18 @@ def fine_tuned_model(text: str) -> str:
 
     return translate(text)
 
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     print(
         translate("Hello, how are you?")
-    )
+    )"""
+
+if __name__ == "__main__":
+    text = """
+    Iran and the US have traded strikes after American forces attacked two rocket launchers on Larak Island in the Strait of Hormuz.
+    """
+
+    print("INPUT:")
+    print(text)
+
+    print("\nOUTPUT:")
+    print(translate(text))
