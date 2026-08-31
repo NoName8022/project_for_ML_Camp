@@ -36,6 +36,8 @@ model.eval()
 
 def translate(text: str) -> str:
 
+    print("[MBART] translate() called")
+
     tokenizer.src_lang = SOURCE_LANGUAGE_MBART
 
     inputs = tokenizer(
@@ -44,6 +46,8 @@ def translate(text: str) -> str:
         truncation=True,
         max_length=128
     ).to(device)
+
+    print("[MBART] token count:", inputs["input_ids"].shape[1])
 
     with torch.no_grad():
 
@@ -61,6 +65,8 @@ def translate(text: str) -> str:
         skip_special_tokens=True
     )
 
+    print("[MBART] RESULT:", repr(result))
+
     return result
 
 
@@ -70,24 +76,19 @@ def fine_tuned_model(text: str) -> str:
     Translate English text into Ukrainian using
     the fine-tuned machine translation model.
     """
-    print("[TOOL] fine_tuned_model")
-    print(f"[INPUT] {text}")
-    
+    print("\nFINE-TUNED MODEL")
+    print("INPUT LENGTH:", len(text))
+    print("INPUT:", text[:500])
 
-    return translate(text)
+    result = translate(text)
 
-"""if __name__ == "__main__":
-    print(
-        translate("Hello, how are you?")
-    )"""
+    print("OUTPUT:", result)
+
+    return result
 
 if __name__ == "__main__":
-    text = """
-    Iran and the US have traded strikes after American forces attacked two rocket launchers on Larak Island in the Strait of Hormuz.
-    """
+    print(
+        translate("Hello, how are you?")
+    )
 
-    print("INPUT:")
-    print(text)
 
-    print("\nOUTPUT:")
-    print(translate(text))

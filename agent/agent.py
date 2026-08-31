@@ -83,15 +83,6 @@ You have access to three types of tools.
    Use this tool whenever the user explicitly asks you
    to send, forward, or deliver information to Telegram.
 
-When the user asks to translate something AND send the
-translation to Telegram:
-1. Translate the text using fine_tuned_model.
-2. Call send_telegram_message with the translated text.
-3. Only after the tool succeeds, tell the user that the
-   message was sent successfully.
-4. Never claim that Telegram is unavailable unless the
-   Telegram tool actually returns an error.
-
 Rules:
 - Use fine_tuned_model for translation requests.
 - Use student_rag for questions about the student.
@@ -99,6 +90,9 @@ Rules:
 - Do not invent information about the student.
 - If student_rag says that information is unavailable,
   report that to the user.
+- When you use fine_tuned_model for translation, return the tool's output exactly as provided.
+- Do not rewrite, improve, correct, summarize, or regenerate the translation.
+- Do not perform the translation yourself.
 """
     )
 
